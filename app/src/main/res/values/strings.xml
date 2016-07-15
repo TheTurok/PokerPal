@@ -2,7 +2,25 @@
 <resources>
 
     <string name="app_name">Poker Pal</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="playerLabel">Players</string>
     <string name="action_settings">Settings</string>
+
+    <string name="totalPotLabel">Total Pot</string>
+    <string name="totalPotString">69</string>
+
+    <string name="setting">*</string>
+
+    <string name="clockLabel">Clock</string>
+    <string name="clock">5:00</string>
+
+    <string name="player1">Player 1  -- Bet 75 -- o</string>
+    <string name="player2">Player 2  -- Bet __ -- *</string>
+    <string name="player3">Player 3</string>
+    <string name="player4">Player 4</string>
+    <string name="player5">Player 5</string>
+    <string name="player6">Player 6</string>
+    <string name="player7">Player 7</string>
+    <string name="player8">Player 8</string>
+    <string name="player9">Player 9</string>
 
 </resources>
