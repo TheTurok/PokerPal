@@ -148,29 +148,50 @@
 
     <!-- Button Functions -->
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/p9"
+    android:orientation="horizontal"
+    android:paddingTop="10dp">
+
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_weight="25"
+        android:text="@string/check"
+        android:id="@+id/check" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
         android:text="@string/bet"
         android:id="@+id/bet"
-        android:layout_below="@+id/p9"
-        android:layout_marginTop="10dp" />
+        android:layout_weight="25" />
+
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
         android:text="@string/call"
         android:id="@+id/call"
-        android:layout_toRightOf="@+id/bet"
-        android:layout_alignBaseline="@+id/bet" />
+        android:layout_weight="25"/>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
         android:text="@string/fold"
         android:id="@+id/fold"
-        android:layout_toRightOf="@+id/call"
-        android:layout_alignBaseline="@+id/bet" />
+        android:layout_weight="25" />
+
+</LinearLayout>
+
+    <!-- Missing
+     Setting 1. add/remove player
+     Button. stop time
+     Button for menu
+
+     -->
 
 
 

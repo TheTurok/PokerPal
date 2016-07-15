@@ -26,5 +26,6 @@
     <string name="bet">Bet</string>
     <string name="call">Call</string>
     <string name="fold">Fold</string>
+    <string name="check">Check</string>
 
 </resources>
