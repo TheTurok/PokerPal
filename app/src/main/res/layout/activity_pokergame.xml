@@ -54,7 +54,17 @@
 
 
     <!-- PLAYERS STRING NAME
-       -most likely will change due to bad coding for this program -->
+       -most likely will change due to bad coding for this program
+       1. make it so only you can see playing players
+       2. make it so you can add and delete players either on setting
+            or manually on this screen
+       3. The bet should be seperate from the name string
+            and updatable number
+       4. also and indicator to show who's turn it is
+       5. Most likely will turn into a list view because text view is in-efficient
+            and can be bad programming and data can be lost.
+
+       -->
 
     <TextView
         android:id="@+id/p1"
@@ -146,7 +156,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/p8"/>
 
-    <!-- Button Functions -->
+    <!-- Button Functions
+     1. bet would have a popup of up an down of what you can bet
+     2. and the Bet button will turn into raise after the first bet-->
 
 <LinearLayout
     android:layout_width="match_parent"
