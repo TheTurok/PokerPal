@@ -8,6 +8,7 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".pokergame">
 
+
     <TextView
         android:id="@+id/totalP"
         android:text="@string/totalPotLabel"
@@ -96,10 +97,31 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/p3"/>
 
+    <!-- Button Functions -->
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bet"
+        android:id="@+id/bet"
+        android:layout_below="@+id/p4"
+        android:layout_marginTop="50dp" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/call"
+        android:id="@+id/call"
+        android:layout_toRightOf="@+id/bet"
+        android:layout_alignBaseline="@+id/bet" />
 
-
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/fold"
+        android:id="@+id/fold"
+        android:layout_toRightOf="@+id/call"
+        android:layout_alignBaseline="@+id/bet" />
 
 
 
