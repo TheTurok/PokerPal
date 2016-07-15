@@ -97,6 +97,56 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/p3"/>
 
+    <TextView
+        android:id="@+id/p5"
+        android:text="@string/player5"
+        android:textSize="22dp"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/p4"/>
+
+    <TextView
+        android:id="@+id/p6"
+        android:text="@string/player6"
+        android:textSize="22dp"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/p5"/>
+
+    <TextView
+        android:id="@+id/p7"
+        android:text="@string/player7"
+        android:textSize="22dp"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/p6"/>
+
+    <TextView
+        android:id="@+id/p8"
+        android:text="@string/player8"
+        android:textSize="22dp"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/p7"/>
+
+    <TextView
+        android:id="@+id/p9"
+        android:text="@string/player9"
+        android:textSize="22dp"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/p8"/>
+
     <!-- Button Functions -->
 
     <Button
@@ -104,8 +154,8 @@
         android:layout_height="wrap_content"
         android:text="@string/bet"
         android:id="@+id/bet"
-        android:layout_below="@+id/p4"
-        android:layout_marginTop="50dp" />
+        android:layout_below="@+id/p9"
+        android:layout_marginTop="10dp" />
 
     <Button
         android:layout_width="wrap_content"
