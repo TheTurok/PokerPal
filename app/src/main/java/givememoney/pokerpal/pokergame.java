@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+/** google doc for PokerPal
+ *      http://tinyurl.com/thepokerpal
+ */
 
 public class pokergame extends Activity {
 
