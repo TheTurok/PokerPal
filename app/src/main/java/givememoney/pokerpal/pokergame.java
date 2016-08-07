@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.InputType;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -81,8 +83,53 @@ public class pokergame extends Activity {
                         });
 
         // create an alert dialog
-        AlertDialog alert = alertDialogBuilder.create();
+        final AlertDialog alert = alertDialogBuilder.create();
+
+        //Disable bet for invalid inputs
+        //TODO: Set max bet as current user chips amount
+        editText.addTextChangedListener(new TextWatcher() {
+            private void handleText() {
+                // Grab the button
+                final Button okButton = alert.getButton(AlertDialog.BUTTON_POSITIVE);
+
+                boolean validBet = false;
+                double betSize = 0;
+                double maxBet = 10000;
+                String betString = editText.getText().toString();
+                if (betString.length() > 0)
+                {
+                    try {
+                        betSize = Double.valueOf(betString.toString());
+                    }
+                    catch(Exception e) {
+                        betSize = 0;
+                    }
+                    System.out.println("betSize is: " + betSize + "\n" +
+                    "betString: " + betString + "\n" + "---------");
+                    if (betSize <= maxBet)
+                        validBet = true;
+                }
+                if (!validBet){
+                    okButton.setEnabled(false);
+                } else {
+                    okButton.setEnabled(true);
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable arg0) {
+                handleText();
+            }
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // Nothing to do
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // Nothing to do
+            }
+        });
         alert.show();
+        alert.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
     }
 
     @Override
