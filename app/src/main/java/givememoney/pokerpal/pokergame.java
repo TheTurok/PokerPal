@@ -15,6 +15,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import givememoney.table.PokerTable;
+import givememoney.table.Player;
 
 /** google doc for PokerPal
  *      http://tinyurl.com/thepokerpal
@@ -26,6 +28,10 @@ public class pokergame extends Activity {
 
     private Button betButton;
     private TextView potString;
+
+    Player current = new Player(500);
+    final double maxBet = current.getCash();
+    //final double minBet = previousBet;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,7 +100,7 @@ public class pokergame extends Activity {
 
                 boolean validBet = false;
                 double betSize = 0;
-                double maxBet = 10000;
+                double minBet = 1;
                 String betString = editText.getText().toString();
                 if (betString.length() > 0)
                 {
@@ -106,7 +112,7 @@ public class pokergame extends Activity {
                     }
                     System.out.println("betSize is: " + betSize + "\n" +
                     "betString: " + betString + "\n" + "---------");
-                    if (betSize <= maxBet)
+                    if (betSize <= maxBet && betSize >= minBet)
                         validBet = true;
                 }
                 if (!validBet){
