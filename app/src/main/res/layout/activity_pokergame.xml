@@ -96,15 +96,17 @@
        -->
 <!--
     <TextView
+        android:textColor="#ffffff"
         android:id="@+id/p1"
         android:text="@string/player1"
         android:textSize="22sp"
         android:paddingTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/potnumber"/>
+        android:layout_below="@+id/thePot"/>
 
     <TextView
+        android:textColor="#ffffff"
         android:id="@+id/p2"
         android:text="@string/player2"
         android:textSize="22sp"
