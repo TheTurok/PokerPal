@@ -13,11 +13,10 @@
         android:textColor="#ffffff"
         android:id="@+id/totalP"
         android:text="@string/totalPotLabel"
-        android:gravity="left"
+        android:gravity="start"
         android:textSize="22sp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingRight="3dp" />
+        android:layout_height="wrap_content"/>
 
     <TextView
         android:textColor="#ffffff"
@@ -28,7 +27,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_marginTop="-5dp"
-        android:layout_toRightOf="@+id/totalP"/>
+        android:layout_toEndOf="@+id/totalP"/>
 
 
     <TextView
@@ -36,8 +35,8 @@
         android:id="@+id/thePot"
         android:text="@string/pot"
         android:textSize="20sp"
-        android:layout_alignLeft="@id/totalP"
-        android:layout_alignRight="@id/totalP"
+        android:layout_alignStart="@id/totalP"
+        android:layout_alignEnd="@id/totalP"
         android:layout_width="0dp"
         android:gravity="center"
         android:layout_margin="5dp"
@@ -49,8 +48,8 @@
         android:id="@+id/thepotnumber"
         android:text="@string/totalPotString"
         android:textSize="18sp"
-        android:layout_alignLeft="@id/potnumber"
-        android:layout_alignRight="@id/potnumber"
+        android:layout_alignStart="@id/potnumber"
+        android:layout_alignEnd="@id/potnumber"
         android:layout_width="0dp"
         android:gravity="center"
         android:layout_margin="5dp"
@@ -64,7 +63,7 @@
         android:text="@string/clockLabel"
         android:textSize="22sp"
         android:layout_width="75dip"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:gravity="center"
         android:layout_height="wrap_content"/>
 
@@ -74,9 +73,9 @@
         android:text="@string/clock"
         android:textSize="26sp"
         android:layout_width="0dp"
-        android:layout_alignLeft="@id/clockTitle"
-        android:layout_alignRight="@id/clockTitle"
-        android:layout_alignParentRight="true"
+        android:layout_alignStart="@id/clockTitle"
+        android:layout_alignEnd="@id/clockTitle"
+        android:layout_alignParentEnd="true"
         android:gravity="center"
         android:layout_height="wrap_content"
         android:layout_below="@+id/clockTitle"/>
@@ -189,7 +188,8 @@
     android:orientation="horizontal"
     android:paddingTop="10dp"
     android:id="@+id/linearLayout">
-
+    <!--   android:style="?android:attr/buttonBarStyle"-->
+    <!--  android:style="?android:attr/buttonBarButtonStyle"-->
     <Button
         android:textColor="#ffffff"
         android:layout_width="match_parent"
