@@ -8,7 +8,7 @@ android:layout_height="match_parent">
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Enter your bet:"
-        android:id="@+id/textView" />
+        android:id="@+id/betTextView" />
 
     <EditText
         android:id="@+id/betInput"
