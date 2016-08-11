@@ -15,7 +15,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import givememoney.table.PokerTable;
+import givememoney.table.Game;
 import givememoney.table.Player;
 
 /** google doc for PokerPal
@@ -29,8 +29,9 @@ public class pokergame extends Activity {
     private Button betButton;
     private TextView potString;
 
-    Player current = new Player(500);
-    final double maxBet = current.getCash();
+    Game currentGame = new Game();
+    final double maxBet = currentGame.getCurrentPlayer().getCash();
+
     //final double minBet = previousBet;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

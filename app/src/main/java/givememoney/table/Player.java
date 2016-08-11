@@ -8,13 +8,14 @@ package givememoney.table;
 
 
 public class Player {
-    private double m_totalCash;
     public static enum Status {
         ACTIVE, WAITING, IDLE
     }
+
+    private double m_totalCash;
     private Status m_status;
     private boolean m_checkFold;
-    public String m_name;
+    private String m_name;
 
     public Player() {
         m_totalCash = 100;
@@ -45,6 +46,6 @@ public class Player {
 
     public Status getStatus(){ return m_status;}
     public double getCash() { return m_totalCash;}
-    public String m_name() { return m_name;}
+    public String getName() { return m_name;}
 
 }
