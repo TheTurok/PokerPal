@@ -6,6 +6,8 @@
 /.idea/misc.xml
 /.idea/runConfigurations.xml
 /.idea/vcs.xml
+/.idea/gradle.xml
+/.idea/modules.xml
 /app/app.iml
 /app/build.gradle
 /.idea/libraries
