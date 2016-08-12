@@ -29,5 +29,8 @@
     <string name="fold">Fold</string>
     <string name="check">Check</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main_menu">MainMenu</string>
+
+    <string name="betPrompt">Enter your bet: </string>
 
 </resources>

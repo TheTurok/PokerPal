@@ -18,7 +18,10 @@
         </activity>
         <activity
             android:name="com.PokerPal.mainactivity.MainActivity"
-            android:label="@string/title_activity_main"></activity>
+            android:label="@string/title_activity_main" />
+        <activity
+            android:name=".MainMenu"
+            android:label="@string/title_activity_main_menu"></activity>
     </application>
 
 </manifest>
