@@ -21,7 +21,7 @@ import givememoney.table.Game;
  *      http://tinyurl.com/thepokerpal
  */
 
-
+//TODO: Add ability to pass params (type of pokergame, numplayers, etc) to onCreate
 
 public class pokergame extends Activity {
 

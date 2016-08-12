@@ -16,9 +16,8 @@ public class MainMenu extends Activity {
 
     public void startPokerGame(View v) {
         Intent intent = new Intent(this, pokergame.class);
-        //EditText editText = (EditText) findViewById(R.id.edit_message);
-        //String message = editText.getText().toString();
-        //intent.putExtra(EXTRA_MESSAGE, message);
+
+        //TODO: Add parameters to new game activity (type of game, num players, etc.)
         startActivity(intent);
     }
 
