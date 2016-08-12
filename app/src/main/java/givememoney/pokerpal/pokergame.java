@@ -16,7 +16,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import givememoney.table.Game;
-import givememoney.table.Player;
 
 /** google doc for PokerPal
  *      http://tinyurl.com/thepokerpal
@@ -46,6 +45,7 @@ public class pokergame extends Activity {
 
             @Override
             public void onClick(View view) {
+                currentGame.cycleActivePlayer();
                 showBetInputDialog();
 
             }
@@ -111,8 +111,7 @@ public class pokergame extends Activity {
                     catch(Exception e) {
                         betSize = 0;
                     }
-                    System.out.println("betSize is: " + betSize + "\n" +
-                    "betString: " + betString + "\n" + "---------");
+                    
                     if (betSize <= maxBet && betSize >= minBet)
                         validBet = true;
                 }

@@ -24,17 +24,32 @@ import java.util.List;
 
 public class Game {
     private int m_numPlayers;
+    private int m_numSeats;
     private List<Player> players;
-    private int playerTurn;
+    private int m_playerTurn;
+    private double totalPot;
+    private List<Double> sidePots;
 
     public Game() {
+
+        m_numSeats = 6;
         m_numPlayers = 1;
-        players = new ArrayList<Player>(1);
+        players = new ArrayList<Player>(m_numSeats);
         players.add(new Player(600));
-        playerTurn = 0;
+        m_playerTurn = 0;
         System.out.println("successfully created Game object");
+    }
 
-}
+    public Player getCurrentPlayer(){ return players.get(m_playerTurn);}
 
-    public Player getCurrentPlayer(){ return players.get(playerTurn);}
+    //do while?
+    public void cycleActivePlayer() {
+        //Go back to beginning if there are no more players
+        if (m_playerTurn + 1 > m_numPlayers || m_playerTurn == 0) {
+            m_playerTurn = 0;
+            return;
+        }
+        //otherwise go to next player
+        m_playerTurn++;
+    }
 }
