@@ -2,6 +2,7 @@ package givememoney.pokerpal;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.Editable;
@@ -12,7 +13,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -22,6 +25,8 @@ import givememoney.table.Game;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
+import java.util.ArrayList;
 
 /** google doc for PokerPal
  *      http://tinyurl.com/thepokerpal
@@ -33,9 +38,72 @@ public class pokergame extends Activity {
 
     /*ListView Adapter Code start **/
     ListView plv;
-    String[] mockplayerlist = {"player1", "player2", "player3", "player4", "player5", "player6",
-            "player7", "player8", "player9", "player10" };
-    /**end **/
+
+    class mockRow
+    {
+        String mockname;
+        String mockmoney;
+        String mockbet;
+        mockRow(String mn,String mm, String mb){
+            this.mockname = mn;
+            this.mockmoney = mm;
+            this.mockbet = mb;
+        }
+    }
+
+    class myAdapter extends BaseAdapter {
+
+        ArrayList<mockRow> mockList;
+        Context context;
+        myAdapter(Context c)
+        {
+            context = c;
+            mockList = new ArrayList<mockRow>();
+            String[] mockplayername = {"player1", "player2", "player3", "player4", "player5", "player6",
+                    "player7", "player8", "player9", "player10" };
+            String[] mockplayermoney = {"1500","1500","1500","1500","1500","1500","1500","1500","1500","1500" };
+            String[] mockplayerbet = {"1500","1500","1500","1500","1500","1500","1500","1500","1500","1500" };
+
+            for(int i = 0; i< 10; i++)
+            {
+                mockList.add(new mockRow(mockplayername[i], mockplayermoney[i], mockplayerbet[i]));
+            }
+        }
+
+        @Override
+        public int getCount() {
+            return mockList.size();
+        }
+
+        @Override
+        public Object getItem(int i) {
+            return mockList.get(i);
+        }
+
+        @Override
+        public long getItemId(int i) {
+            return i;
+        }
+
+        @Override
+        public View getView(int i, View view, ViewGroup viewGroup) {
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View row = inflater.inflate(R.layout.playerpopulate,viewGroup,false);
+
+            TextView pname = (TextView) row.findViewById(R.id.populateName);
+            TextView pmoney = (TextView) row.findViewById(R.id.populateMoney);
+            TextView pbet = (TextView) row.findViewById(R.id.populateBet);
+
+            mockRow temp = mockList.get(i);
+
+            pname.setText(temp.mockname);
+            pmoney.setText(temp.mockmoney);
+            pbet.setText(temp.mockbet);
+
+            return row;
+        }
+    }
+    /**     end     **/
 
     private Button betButton;
     private TextView potString;
@@ -48,7 +116,7 @@ public class pokergame extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         currentGame = EventBus.getDefault().getStickyEvent(Game.class);
-        maxBet = currentGame.getCurrentPlayer().getCash();
+//        maxBet = currentGame.getCurrentPlayer().getCash();
 
         setContentView(R.layout.activity_pokergame);
         //Gets correct things from activity_pokergame.xml
@@ -69,8 +137,7 @@ public class pokergame extends Activity {
 
         //adapter Class code
         plv = (ListView) findViewById(R.id.PlayerListView);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1 , mockplayerlist);
-        plv.setAdapter(adapter);
+        plv.setAdapter(new myAdapter(this));
     }
 
     //Creates an input dialog for user BET on click of BET button
@@ -131,7 +198,7 @@ public class pokergame extends Activity {
                     catch(Exception e) {
                         betSize = 0;
                     }
-                    
+
                     if (betSize <= maxBet && betSize >= minBet)
                         validBet = true;
                 }
@@ -162,7 +229,7 @@ public class pokergame extends Activity {
     @Subscribe
     public void onGameEvent(Game gameEvent){
         currentGame = gameEvent;
-        maxBet = currentGame.getCurrentPlayer().getCash();
+//        maxBet = currentGame.getCurrentPlayer().getCash();
     }
 
     @Override

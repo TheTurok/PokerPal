@@ -60,6 +60,7 @@ public class Game {
         System.out.println("******Successful call to complicated Game constructor!*****");
     }
 
+    //TODO: get rid of this error
     public Player getCurrentPlayer(){ return players.get(m_playerTurn);}
 
     //do while?

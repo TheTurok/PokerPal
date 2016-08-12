@@ -1,12 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/radioButton"
+        android:checked="@+id/populateTurn" />
+
+    <TextView
+        android:textColor="#ffffff"
+        android:layout_width="84dip"
+        android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
+        android:text="Player 1"
+        android:id="@+id/populateName" />
+
+    <TextView
+        android:textColor="#ffffff"
+        android:layout_width="90dip"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="0000"
+        android:gravity="center"
+        android:id="@+id/populateMoney" />
+
+    <TextView
+        android:textColor="#ffffff"
+        android:layout_width="90dip"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:gravity="center"
+        android:text="750"
+        android:id="@+id/populateBet" />
+
+    <TextView
+        android:textColor="#ffffff"
+        android:layout_width="fill_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="X"
         android:id="@+id/textView" />
+
+
 </LinearLayout>
