@@ -33,4 +33,7 @@
 
     <string name="betPrompt">Enter your bet: </string>
 
+    <string name="newGame">New Game</string>
+    <string name="loadGame">Continue</string>
+
 </resources>

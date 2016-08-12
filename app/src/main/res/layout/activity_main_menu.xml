@@ -9,4 +9,25 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="givememoney.pokerpal.MainMenu">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="128dp"
+            android:text="@string/newGame"
+            android:id="@+id/btn_newGame"
+            android:layout_gravity="left|top"
+            android:onClick="startPokerGame" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="159dp"
+            android:text="@string/loadGame"
+            android:id="@+id/btn_loadGame"
+            android:layout_gravity="left|bottom" />
+    </FrameLayout>
 </RelativeLayout>
