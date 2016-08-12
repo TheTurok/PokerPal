@@ -85,8 +85,8 @@ public class Game {
         return returnString;
     }
 
-   public void consoleLog() {
-      //  System.out.println(this.toString());
+    public void consoleLog() {
+        System.out.println(this.toString());
     }
 
 

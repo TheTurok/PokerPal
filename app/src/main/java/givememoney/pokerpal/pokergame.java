@@ -48,7 +48,7 @@ public class pokergame extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         currentGame = EventBus.getDefault().getStickyEvent(Game.class);
-       // maxBet = currentGame.getCurrentPlayer().getCash();
+        maxBet = currentGame.getCurrentPlayer().getCash();
 
         setContentView(R.layout.activity_pokergame);
         //Gets correct things from activity_pokergame.xml
@@ -59,9 +59,9 @@ public class pokergame extends Activity {
 
             @Override
             public void onClick(View view) {
-                //currentGame.consoleLog();
+                currentGame.consoleLog();
                 currentGame.cycleActivePlayer();
-                //currentGame.consoleLog();
+                currentGame.consoleLog();
                 showBetInputDialog();
 
             }
@@ -162,7 +162,7 @@ public class pokergame extends Activity {
     @Subscribe
     public void onGameEvent(Game gameEvent){
         currentGame = gameEvent;
-      //  maxBet = currentGame.getCurrentPlayer().getCash();
+        maxBet = currentGame.getCurrentPlayer().getCash();
     }
 
     @Override
