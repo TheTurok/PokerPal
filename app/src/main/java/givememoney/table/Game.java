@@ -27,8 +27,8 @@ public class Game {
     private int m_numSeats;
     private List<Player> players;
     private int m_playerTurn;
-    private double totalPot;
-    private List<Double> sidePots;
+    private double m_totalPot;
+    private List<Double> m_sidePots;
 
     public Game() {
 
@@ -40,16 +40,52 @@ public class Game {
         System.out.println("successfully created Game object");
     }
 
+    public Game(int numSeats, int numPlayers) throws IndexOutOfBoundsException {
+
+        if (numSeats <= 0 || numPlayers <=0 )
+            throw new IndexOutOfBoundsException();
+
+        m_numSeats = numSeats;
+        m_numPlayers = numPlayers;
+        players = new ArrayList<Player>(m_numSeats);
+
+        for (int i = 0; i < m_numPlayers; i++) {
+            players.add(new Player(350, "PLAYER_" + Integer.toString(i)));
+        }
+
+        m_playerTurn = 0;
+        m_totalPot = 0;
+        m_sidePots = new ArrayList<Double>(m_numPlayers);
+
+        System.out.println("******Successful call to complicated Game constructor!*****");
+    }
+
     public Player getCurrentPlayer(){ return players.get(m_playerTurn);}
 
     //do while?
     public void cycleActivePlayer() {
         //Go back to beginning if there are no more players
-        if (m_playerTurn + 1 > m_numPlayers || m_playerTurn == 0) {
+        if (m_playerTurn + 1 >= m_numPlayers || m_numPlayers == 1) {
             m_playerTurn = 0;
             return;
         }
         //otherwise go to next player
         m_playerTurn++;
+    }
+
+    public String toString() {
+        String returnString =
+        "\n-----Current Game Info------\n" +
+        " Number of Players: " + m_numPlayers + "\n" +
+        " Number of Seats: " + m_numSeats + "\n" +
+        " Total Pot: " + m_totalPot + "\n" +
+        " Current player turn ID: " + players.get(m_playerTurn).toString() + "\n" +
+        " \n\nList of Players: " + players.toString() + "\n" + "------------\n";
+
+        return returnString;
+    }
+
+    public void consoleLog() {
+        System.out.println(this.toString());
     }
 }

@@ -47,5 +47,12 @@ public class Player {
     public Status getStatus(){ return m_status;}
     public double getCash() { return m_totalCash;}
     public String getName() { return m_name;}
+    public String toString() {
+        String returnString = "\n**Name: " + m_name + "\n" +
+                "Total Money: " + m_totalCash + "\n" +
+                "Status: " + m_status + "\n\n**";
+
+        return returnString;
+    }
 
 }

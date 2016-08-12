@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.View;
+import givememoney.table.Game;
 import android.widget.EditText;
+
+import org.greenrobot.eventbus.EventBus;
 
 public class MainMenu extends Activity {
 
@@ -17,8 +20,10 @@ public class MainMenu extends Activity {
     public void startPokerGame(View v) {
         Intent intent = new Intent(this, pokergame.class);
 
-        //TODO: Add parameters to new game activity (type of game, num players, etc.)
+        EventBus.getDefault().postSticky(new Game(6,3));
         startActivity(intent);
+        //TODO: Add parameters to new game activity (type of game, num players, etc.)
+
     }
 
 }

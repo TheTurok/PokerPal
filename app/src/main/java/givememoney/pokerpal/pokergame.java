@@ -15,7 +15,12 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
 import givememoney.table.Game;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 /** google doc for PokerPal
  *      http://tinyurl.com/thepokerpal
@@ -29,14 +34,16 @@ public class pokergame extends Activity {
     private TextView potString;
 
     Game currentGame = new Game();
-    final double maxBet = currentGame.getCurrentPlayer().getCash();
+    double maxBet = 500;
 
     //final double minBet = previousBet;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pokergame);
+        currentGame = EventBus.getDefault().getStickyEvent(Game.class);
+        maxBet = currentGame.getCurrentPlayer().getCash();
 
+        setContentView(R.layout.activity_pokergame);
         //Gets correct things from activity_pokergame.xml
         betButton = (Button) findViewById(R.id.bet);
         potString = (TextView) findViewById(R.id.potnumber);
@@ -45,7 +52,9 @@ public class pokergame extends Activity {
 
             @Override
             public void onClick(View view) {
+                currentGame.consoleLog();
                 currentGame.cycleActivePlayer();
+                currentGame.consoleLog();
                 showBetInputDialog();
 
             }
@@ -136,6 +145,13 @@ public class pokergame extends Activity {
         });
         alert.show();
         alert.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+    }
+
+    //Updates the current game of the pokerGame with passed gameEvent
+    @Subscribe
+    public void onGameEvent(Game gameEvent){
+        currentGame = gameEvent;
+        maxBet = currentGame.getCurrentPlayer().getCash();
     }
 
     @Override
