@@ -28,11 +28,11 @@ public class Game {
     private int playerTurn;
 
     public Game() {
-    m_numPlayers = 1;
-    players = new ArrayList<Player>(1);
-    players.add(new Player(600));
-    playerTurn = 0;
-    System.out.println("successfully created Game object");
+        m_numPlayers = 1;
+        players = new ArrayList<Player>(1);
+        players.add(new Player(600));
+        playerTurn = 0;
+        System.out.println("successfully created Game object");
 
 }
 

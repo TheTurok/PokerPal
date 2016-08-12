@@ -1,4 +1,5 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6,8 +7,9 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".pokergame">
-    <!--android:background="@drawable/perlinfelt1"-->
+    tools:context=".pokergame"
+    android:background="@drawable/perlinfelt1">
+
 
     <TextView
         android:textColor="#ffffff"
@@ -94,7 +96,7 @@
             and can be bad programming and data can be lost.
 
        -->
-<!--
+
     <TextView
         android:textColor="#ffffff"
         android:id="@+id/p1"
@@ -177,7 +179,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/p8"/>
--->
+
     <!-- Button Functions
      1. bet would have a popup of up an down of what you can bet
      2. and the Bet button will turn into raise after the first bet-->
