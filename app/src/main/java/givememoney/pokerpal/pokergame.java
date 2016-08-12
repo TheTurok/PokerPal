@@ -12,12 +12,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import givememoney.table.Game;
-
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -30,6 +31,12 @@ import org.greenrobot.eventbus.ThreadMode;
 
 public class pokergame extends Activity {
 
+    /*ListView Adapter Code start **/
+    ListView plv;
+    String[] mockplayerlist = {"player1", "player2", "player3", "player4", "player5", "player6",
+            "player7", "player8", "player9", "player10" };
+    /**end **/
+
     private Button betButton;
     private TextView potString;
 
@@ -41,7 +48,7 @@ public class pokergame extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         currentGame = EventBus.getDefault().getStickyEvent(Game.class);
-        maxBet = currentGame.getCurrentPlayer().getCash();
+       // maxBet = currentGame.getCurrentPlayer().getCash();
 
         setContentView(R.layout.activity_pokergame);
         //Gets correct things from activity_pokergame.xml
@@ -52,14 +59,18 @@ public class pokergame extends Activity {
 
             @Override
             public void onClick(View view) {
-                currentGame.consoleLog();
+                //currentGame.consoleLog();
                 currentGame.cycleActivePlayer();
-                currentGame.consoleLog();
+                //currentGame.consoleLog();
                 showBetInputDialog();
 
             }
         });
 
+        //adapter Class code
+        plv = (ListView) findViewById(R.id.PlayerListView);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1 , mockplayerlist);
+        plv.setAdapter(adapter);
     }
 
     //Creates an input dialog for user BET on click of BET button
@@ -151,7 +162,7 @@ public class pokergame extends Activity {
     @Subscribe
     public void onGameEvent(Game gameEvent){
         currentGame = gameEvent;
-        maxBet = currentGame.getCurrentPlayer().getCash();
+      //  maxBet = currentGame.getCurrentPlayer().getCash();
     }
 
     @Override

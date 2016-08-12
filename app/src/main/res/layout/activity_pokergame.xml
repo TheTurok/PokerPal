@@ -48,7 +48,7 @@
     <TextView
         android:textColor="#ffffff"
         android:id="@+id/thepotnumber"
-        android:text="@string/totalPotString"
+        android:text="@string/potString"
         android:textSize="18sp"
         android:layout_alignStart="@id/potnumber"
         android:layout_alignEnd="@id/potnumber"
@@ -85,100 +85,16 @@
 
 
     <!-- PLAYERS STRING NAME
-       -most likely will change due to bad coding for this program
-       1. make it so only you can see playing players
-       2. make it so you can add and delete players either on setting
-            or manually on this screen
-       3. The bet should be separate from the name string
-            and updatable number
-       4. also and indicator to show who's turn it is
-       5. Most likely will turn into a list view because text view is in-efficient
-            and can be bad programming and data can be lost.
 
        -->
 
-    <TextView
-        android:textColor="#ffffff"
-        android:id="@+id/p1"
-        android:text="@string/player1"
-        android:textSize="22sp"
-        android:paddingTop="20dp"
-        android:layout_width="wrap_content"
+    <ListView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/thePot"/>
+        android:layout_below="@id/thePot"
+        android:id="@+id/PlayerListView"
+        android:layout_above="@+id/linearLayout" />
 
-    <TextView
-        android:textColor="#ffffff"
-        android:id="@+id/p2"
-        android:text="@string/player2"
-        android:textSize="22sp"
-        android:paddingTop="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/p1"/>
-
-    <TextView
-        android:id="@+id/p3"
-        android:text="@string/player3"
-        android:textSize="22sp"
-        android:paddingTop="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/p2"/>
-
-    <TextView
-        android:id="@+id/p4"
-        android:text="@string/player4"
-        android:textSize="22sp"
-        android:paddingTop="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/p3"/>
-
-    <TextView
-        android:id="@+id/p5"
-        android:text="@string/player5"
-        android:textSize="22sp"
-        android:paddingTop="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/p4"/>
-
-    <TextView
-        android:id="@+id/p6"
-        android:text="@string/player6"
-        android:textSize="22sp"
-        android:paddingTop="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/p5"/>
-
-    <TextView
-        android:id="@+id/p7"
-        android:text="@string/player7"
-        android:textSize="22sp"
-        android:paddingTop="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/p6"/>
-
-    <TextView
-        android:id="@+id/p8"
-        android:text="@string/player8"
-        android:textSize="22sp"
-        android:paddingTop="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/p7"/>
-
-    <TextView
-        android:id="@+id/p9"
-        android:text="@string/player9"
-        android:textSize="22sp"
-        android:paddingTop="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/p8"/>
 
     <!-- Button Functions
      1. bet would have a popup of up an down of what you can bet
@@ -220,6 +136,7 @@
         android:layout_weight="33.33" />
 
 </LinearLayout>
+
 
 
     <!-- Missing

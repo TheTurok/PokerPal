@@ -7,7 +7,8 @@
 
     <string name="pot">Pot</string>
     <string name="totalPotLabel">Total Pot</string>
-    <string name="totalPotString">0500</string>
+    <string name="totalPotString">000000</string>
+    <string name="potString">0000</string>
 
     <string name="setting">*</string>
 
