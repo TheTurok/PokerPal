@@ -55,16 +55,15 @@ public class pokergame extends Activity {
 
         ArrayList<mockRow> mockList;
         Context context;
-        myAdapter(Context c)
+        myAdapter(Context c, Game game)
         {
             context = c;
             mockList = new ArrayList<mockRow>();
-            String[] mockplayername = {"player1", "player2", "player3", "player4", "player5", "player6",
-                    "player7", "player8", "player9", "player10" };
-            String[] mockplayermoney = {"1500","1500","1500","1500","1500","1500","1500","1500","1500","1500" };
+            String[] mockplayername = game.getNames();
+            String[] mockplayermoney = game.getStacks();
             String[] mockplayerbet = {"1500","1500","1500","1500","1500","1500","1500","1500","1500","1500" };
 
-            for(int i = 0; i< 10; i++)
+            for(int i = 0; i< game.getNumPlayers(); i++)
             {
                 mockList.add(new mockRow(mockplayername[i], mockplayermoney[i], mockplayerbet[i]));
             }
@@ -103,6 +102,7 @@ public class pokergame extends Activity {
             return row;
         }
     }
+    //final double minBet = previousBet;
     /**     end     **/
 
     private Button betButton;
@@ -111,7 +111,6 @@ public class pokergame extends Activity {
     Game currentGame = new Game();
     double maxBet = 500;
 
-    //final double minBet = previousBet;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -137,7 +136,7 @@ public class pokergame extends Activity {
 
         //adapter Class code
         plv = (ListView) findViewById(R.id.PlayerListView);
-        plv.setAdapter(new myAdapter(this));
+        plv.setAdapter(new myAdapter(this, currentGame));
     }
 
     //Creates an input dialog for user BET on click of BET button

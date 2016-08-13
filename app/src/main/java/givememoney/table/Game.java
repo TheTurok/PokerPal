@@ -90,6 +90,26 @@ public class Game {
         System.out.println(this.toString());
     }
 
+    public int getNumPlayers() {return m_numPlayers;}
+
+    public String[] getNames() {
+        String[] names = new String[m_numPlayers];
+
+        for (int i = 0; i < m_numPlayers; i++)
+            names[i] = players.get(i).getName();
+
+        return names;
+    }
+
+    public String[] getStacks() {
+        String[] stacks = new String[m_numPlayers];
+
+        for (int i = 0; i < m_numPlayers; i++)
+            stacks[i] = Double.toString(players.get(i).getCash());
+
+        return stacks;
+    }
+
 
     //adapter
 }
