@@ -37,6 +37,7 @@ import java.util.ArrayList;
 public class pokergame extends Activity {
 
     /*ListView Adapter Code start **/
+    /*ListView Adapter Code start **/
     ListView plv;
 
     class mockRow
@@ -103,6 +104,7 @@ public class pokergame extends Activity {
         }
     }
     //final double minBet = previousBet;
+    /**     end     **/
     /**     end     **/
 
     private Button betButton;

@@ -29,12 +29,18 @@
     <string name="call">Call</string>
     <string name="fold">Fold</string>
     <string name="check">Check</string>
+
     <string name="title_activity_main">MainActivity</string>
-    <string name="title_activity_main_menu">MainMenu</string>
+    <string name="title_activity_main_menu">Main Menu</string>
 
     <string name="betPrompt">Enter your bet: </string>
 
     <string name="newGame">New Game</string>
     <string name="loadGame">Continue</string>
+
+    <string name="resume">Resume</string>
+    <string name="addplayer">Add/Remove Player</string>
+    <string name="save">Save Game</string>
+
 
 </resources>
