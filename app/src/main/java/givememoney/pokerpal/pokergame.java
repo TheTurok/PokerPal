@@ -122,11 +122,13 @@ public class pokergame extends Activity {
             throw new NullPointerException("No game on EventBus!");
         maxBet = currentGame.getCurrentPlayer().getCash();
 
+        setContentView(R.layout.activity_pokergame);
+
         //adapter Class code
         plv = (ListView) findViewById(R.id.PlayerListView);
         plv.setAdapter(new myAdapter(this, currentGame));
 
-        setContentView(R.layout.activity_pokergame);
+
         //Gets correct things from activity_pokergame.xml
         betButton = (Button) findViewById(R.id.bet);
         potString = (TextView) findViewById(R.id.potnumber);
