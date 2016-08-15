@@ -49,7 +49,7 @@ public class Player {
     public Status getStatus(){ return m_status;}
     public double getCash() { return m_totalCash;}
     public boolean isCheckFold() {return m_checkFold;}
-    public boolean sitOut() {return m_sitOut;}
+    public boolean sittingOut() {return m_sitOut;}
 
     public void removeCash(double spend) {
         if (spend > m_totalCash)

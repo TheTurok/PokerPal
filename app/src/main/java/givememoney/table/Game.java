@@ -74,7 +74,7 @@ public class Game {
                 if (m_playerTurn == i) {
                     //game should become inactive
                 }
-                if (players.get(i).sitOut()) {
+                if (players.get(i).sittingOut()) {
                     players.get(i).setStatus(Player.Status.IDLE);
                 }
                 if (players.get(i).getStatus() == Player.Status.WAITING) {
@@ -91,7 +91,7 @@ public class Game {
                 getCurrentPlayer().setStatus(Player.Status.ACTIVE);
                 return;
             }
-            if (players.get(j).sitOut()) {
+            if (players.get(j).sittingOut()) {
                 players.get(j).setStatus(Player.Status.IDLE);
             }
             if (j + 1 >= m_playerTurn) {
