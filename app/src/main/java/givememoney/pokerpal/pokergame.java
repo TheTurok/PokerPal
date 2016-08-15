@@ -121,6 +121,7 @@ public class pokergame extends Activity {
     private TextView potString;
 
     Game currentGame = new Game();
+    final myAdapter gameAdapter = new myAdapter(this, currentGame);
     Player currentPlayer;
     double maxBet = 500;
 
@@ -138,7 +139,6 @@ public class pokergame extends Activity {
 
         //adapter Class code
         plv = (ListView) findViewById(R.id.PlayerListView);
-        final myAdapter gameAdapter = new myAdapter(this, currentGame);
         plv.setAdapter(gameAdapter);
 
 
@@ -152,8 +152,6 @@ public class pokergame extends Activity {
             public void onClick(View view) {
                 currentGame.consoleLog();
                 showBetInputDialog();
-                gameAdapter.refreshAdapter(currentPlayer, currentGame.getCurrentPlayerID());
-
             }
         });
 
@@ -187,6 +185,7 @@ public class pokergame extends Activity {
                         String finalPot = Double.toString(finalAmount);
 
                         currentPlayer.removeCash(betAmount);
+                        gameAdapter.refreshAdapter(currentPlayer, currentGame.getCurrentPlayerID());
                         potString.setText(finalPot);
                         currentGame.cycleActivePlayer();
                     }
