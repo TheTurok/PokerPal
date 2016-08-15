@@ -140,7 +140,6 @@ public class pokergame extends Activity {
         plv = (ListView) findViewById(R.id.PlayerListView);
         plv.setAdapter(gameAdapter);
 
-
         //Gets correct things from activity_pokergame.xml
         betButton = (Button) findViewById(R.id.bet);
         potString = (TextView) findViewById(R.id.potnumber);
