@@ -57,7 +57,6 @@ public class Game {
         m_totalPot = 0;
         m_sidePots = new ArrayList<Double>(m_numPlayers);
 
-        System.out.println("******Successful call to complicated Game constructor!*****");
     }
 
     public Player getCurrentPlayer(){ return players.get(m_playerTurn);}
@@ -65,13 +64,35 @@ public class Game {
     public int getCurrentPlayerID() { return m_playerTurn;}
 
     public void cycleActivePlayer() {
-        //Go back to beginning if there are no more players
-        if (m_playerTurn + 1 >= m_numPlayers || m_numPlayers == 1) {
-            m_playerTurn = 0;
+        if (m_numPlayers == 1)
             return;
+
+        getCurrentPlayer().setStatus(Player.Status.WAITING);
+
+        if (m_playerTurn + 1 >= m_numPlayers) {
+            for (int i = 0; i < m_numPlayers; i++) {
+                if (m_playerTurn == i) {
+                    //game should become inactive
+                }
+                if (players.get(i).getStatus() == Player.Status.WAITING) {
+                    m_playerTurn = i;
+                    getCurrentPlayer().setStatus(Player.Status.ACTIVE);
+                    return;
+                }
+            }
         }
-        //otherwise go to next player
-        m_playerTurn++;
+
+        for (int j = m_playerTurn + 1; j < m_numPlayers; j++) {
+            if (players.get(j).getStatus() == Player.Status.WAITING) {
+                m_playerTurn = j;
+                getCurrentPlayer().setStatus(Player.Status.ACTIVE);
+                return;
+            }
+            if (j + 1 >= m_playerTurn) {
+                throw new IndexOutOfBoundsException("Noone is playing anymore!");
+            }
+        }
+
     }
 
     public String toString() {
