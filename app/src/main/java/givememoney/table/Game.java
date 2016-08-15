@@ -86,13 +86,13 @@ public class Game {
         }
 
         for (int j = m_playerTurn + 1; j < m_numPlayers; j++) {
+            if (players.get(j).sittingOut()) {
+                players.get(j).setStatus(Player.Status.IDLE);
+            }
             if (players.get(j).getStatus() == Player.Status.WAITING) {
                 m_playerTurn = j;
                 getCurrentPlayer().setStatus(Player.Status.ACTIVE);
                 return;
-            }
-            if (players.get(j).sittingOut()) {
-                players.get(j).setStatus(Player.Status.IDLE);
             }
             if (j + 1 >= m_playerTurn) {
                 throw new IndexOutOfBoundsException("Noone is playing anymore!");
