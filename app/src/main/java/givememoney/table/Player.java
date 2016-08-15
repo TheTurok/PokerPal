@@ -15,6 +15,7 @@ public class Player {
     private double m_totalCash;
     private Status m_status;
     private boolean m_checkFold;
+    private boolean m_sitOut;
     private String m_name;
 
     public Player() {
@@ -42,10 +43,13 @@ public class Player {
     private void init() {
         m_status = Status.WAITING;
         m_checkFold = false;
+        m_sitOut = false;
     }
 
     public Status getStatus(){ return m_status;}
     public double getCash() { return m_totalCash;}
+    public boolean isCheckFold() {return m_checkFold;}
+    public boolean sitOut() {return m_sitOut;}
 
     public void removeCash(double spend) {
         if (spend > m_totalCash)
@@ -63,5 +67,8 @@ public class Player {
 
         return returnString;
     }
+
+    public void setSitout(boolean wantSit) { m_sitOut = wantSit;}
+    public void setCheckFold(boolean wantCheckFold) {m_checkFold = wantCheckFold;}
 
 }

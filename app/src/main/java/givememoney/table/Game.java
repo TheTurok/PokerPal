@@ -74,6 +74,9 @@ public class Game {
                 if (m_playerTurn == i) {
                     //game should become inactive
                 }
+                if (players.get(i).sitOut()) {
+                    players.get(i).setStatus(Player.Status.IDLE);
+                }
                 if (players.get(i).getStatus() == Player.Status.WAITING) {
                     m_playerTurn = i;
                     getCurrentPlayer().setStatus(Player.Status.ACTIVE);
@@ -87,6 +90,9 @@ public class Game {
                 m_playerTurn = j;
                 getCurrentPlayer().setStatus(Player.Status.ACTIVE);
                 return;
+            }
+            if (players.get(j).sitOut()) {
+                players.get(j).setStatus(Player.Status.IDLE);
             }
             if (j + 1 >= m_playerTurn) {
                 throw new IndexOutOfBoundsException("Noone is playing anymore!");
