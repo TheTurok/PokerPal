@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
@@ -226,12 +227,14 @@ public class pokergame extends Activity {
         alert.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
     }
 
+    /*
     //Updates the current game of the pokerGame with passed gameEvent
     @Subscribe
     public void onGameEvent(Game gameEvent){
         currentGame = gameEvent;
 //        maxBet = currentGame.getCurrentPlayer().getCash();
     }
+    */
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -250,5 +253,16 @@ public class pokergame extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, IngameOption.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
     }
 }
