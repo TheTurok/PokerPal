@@ -119,25 +119,27 @@ public class pokergame extends Activity {
 
     private Button betButton;
     private TextView potString;
-
-    Game currentGame = new Game();
-    final myAdapter gameAdapter = new myAdapter(this, currentGame);
+    Game currentGame;
     Player currentPlayer;
+
+    myAdapter gameAdapter;
+
     double maxBet = 500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) throws NullPointerException {
         super.onCreate(savedInstanceState);
+
         currentGame = EventBus.getDefault().removeStickyEvent(Game.class);
         if (currentGame == null)
             throw new NullPointerException("No game on EventBus!");
 
         currentPlayer = currentGame.getCurrentPlayer();
         maxBet = currentPlayer.getCash();
-
         setContentView(R.layout.activity_pokergame);
 
         //adapter Class code
+        gameAdapter = new myAdapter(this, currentGame);
         plv = (ListView) findViewById(R.id.PlayerListView);
         plv.setAdapter(gameAdapter);
 
@@ -151,7 +153,7 @@ public class pokergame extends Activity {
             @Override
             public void onClick(View view) {
                 currentGame.consoleLog();
-                showBetInputDialog();
+                showBetInputDialog(currentGame);
             }
         });
 
@@ -161,8 +163,9 @@ public class pokergame extends Activity {
     //Creates an input dialog for user BET on click of BET button
     //TODO: Add greater functionality (bet X amount of big blinds)
     //TODO: Raise, reraise, pot size bet, x2, etc.
-    protected void showBetInputDialog() {
+    protected void showBetInputDialog(final Game game) {
 
+        final Player player = currentGame.getCurrentPlayer();
         // get prompts.xml view
         LayoutInflater layoutInflater = LayoutInflater.from(pokergame.this);
         View promptView = layoutInflater.inflate(R.layout.prompts, null);
@@ -184,10 +187,15 @@ public class pokergame extends Activity {
                         Double finalAmount = betAmount+potAmount;
                         String finalPot = Double.toString(finalAmount);
 
-                        currentPlayer.removeCash(betAmount);
-                        gameAdapter.refreshAdapter(currentPlayer, currentGame.getCurrentPlayerID());
+                        System.out.println(
+                                "\n\n==== New Bet ====\n" +
+                                        "Player making bet: " + player.toString() + "\n" +
+                        "bet size: " + inputToString + "\n" +
+                        "current player id: " + game.getCurrentPlayerID() + "\n======\n");
+                        player.removeCash(betAmount);
+                        gameAdapter.refreshAdapter(player, game.getCurrentPlayerID());
                         potString.setText(finalPot);
-                        currentGame.cycleActivePlayer();
+                        game.cycleActivePlayer();
                     }
                 })
                 .setNegativeButton("Cancel",
