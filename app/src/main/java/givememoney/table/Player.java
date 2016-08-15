@@ -54,6 +54,7 @@ public class Player {
         m_totalCash -= spend;
 
     }
+    public void setStatus(Player.Status status) { m_status = status;}
     public String getName() { return m_name;}
     public String toString() {
         String returnString = "\n**Name: " + m_name + "\n" +

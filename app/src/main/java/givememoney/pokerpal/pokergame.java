@@ -124,8 +124,6 @@ public class pokergame extends Activity {
 
     myAdapter gameAdapter;
 
-    double maxBet = 500;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) throws NullPointerException {
         super.onCreate(savedInstanceState);
@@ -135,7 +133,6 @@ public class pokergame extends Activity {
             throw new NullPointerException("No game on EventBus!");
 
         currentPlayer = currentGame.getCurrentPlayer();
-        maxBet = currentPlayer.getCash();
         setContentView(R.layout.activity_pokergame);
 
         //adapter Class code
@@ -153,7 +150,7 @@ public class pokergame extends Activity {
             @Override
             public void onClick(View view) {
                 currentGame.consoleLog();
-                showBetInputDialog(currentGame);
+                showBetInputDialog();
             }
         });
 
@@ -163,9 +160,8 @@ public class pokergame extends Activity {
     //Creates an input dialog for user BET on click of BET button
     //TODO: Add greater functionality (bet X amount of big blinds)
     //TODO: Raise, reraise, pot size bet, x2, etc.
-    protected void showBetInputDialog(final Game game) {
+    protected void showBetInputDialog() {
 
-        final Player player = currentGame.getCurrentPlayer();
         // get prompts.xml view
         LayoutInflater layoutInflater = LayoutInflater.from(pokergame.this);
         View promptView = layoutInflater.inflate(R.layout.prompts, null);
@@ -187,15 +183,9 @@ public class pokergame extends Activity {
                         Double finalAmount = betAmount+potAmount;
                         String finalPot = Double.toString(finalAmount);
 
-                        System.out.println(
-                                "\n\n==== New Bet ====\n" +
-                                        "Player making bet: " + player.toString() + "\n" +
-                        "bet size: " + inputToString + "\n" +
-                        "current player id: " + game.getCurrentPlayerID() + "\n======\n");
-                        player.removeCash(betAmount);
-                        gameAdapter.refreshAdapter(player, game.getCurrentPlayerID());
+                        currentPlayer.removeCash(betAmount);
                         potString.setText(finalPot);
-                        game.cycleActivePlayer();
+                        endTurn();
                     }
                 })
                 .setNegativeButton("Cancel",
@@ -212,6 +202,7 @@ public class pokergame extends Activity {
         //TODO: Set max bet as current user chips amount
         editText.addTextChangedListener(new TextWatcher() {
             private void handleText() {
+                double maxBet = currentPlayer.getCash();
                 // Grab the button
                 final Button okButton = alert.getButton(AlertDialog.BUTTON_POSITIVE);
 
@@ -291,5 +282,11 @@ public class pokergame extends Activity {
     @Override
     public void onDestroy() {
         super.onDestroy();
+    }
+
+    public void endTurn() {
+        gameAdapter.refreshAdapter(currentPlayer, currentGame.getCurrentPlayerID());
+        currentGame.cycleActivePlayer();
+        currentPlayer = currentGame.getCurrentPlayer();
     }
 }
