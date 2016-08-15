@@ -60,10 +60,10 @@ public class Game {
         System.out.println("******Successful call to complicated Game constructor!*****");
     }
 
-    //TODO: get rid of this error
     public Player getCurrentPlayer(){ return players.get(m_playerTurn);}
 
-    //do while?
+    public int getCurrentPlayerID() { return m_playerTurn;}
+
     public void cycleActivePlayer() {
         //Go back to beginning if there are no more players
         if (m_playerTurn + 1 >= m_numPlayers || m_numPlayers == 1) {

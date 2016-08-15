@@ -46,6 +46,14 @@ public class Player {
 
     public Status getStatus(){ return m_status;}
     public double getCash() { return m_totalCash;}
+
+    public void removeCash(double spend) {
+        if (spend > m_totalCash)
+            throw new IndexOutOfBoundsException("Player " + m_name + " tried to overspend!");
+
+        m_totalCash -= spend;
+
+    }
     public String getName() { return m_name;}
     public String toString() {
         String returnString = "\n**Name: " + m_name + "\n" +

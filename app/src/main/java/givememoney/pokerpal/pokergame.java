@@ -23,11 +23,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import givememoney.table.Game;
+import givememoney.table.Player;
+
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 /** google doc for PokerPal
  *      http://tinyurl.com/thepokerpal
@@ -103,6 +106,12 @@ public class pokergame extends Activity {
 
             return row;
         }
+
+        public void refreshAdapter(Player player, int playerID){
+            mockRow updatedRow = new mockRow(player.getName(), Double.toString(player.getCash()),
+                    "69");
+            mockList.set(playerID, updatedRow);
+            notifyDataSetChanged();}
     }
     //final double minBet = previousBet;
     /**     end     **/
@@ -112,6 +121,7 @@ public class pokergame extends Activity {
     private TextView potString;
 
     Game currentGame = new Game();
+    Player currentPlayer;
     double maxBet = 500;
 
     @Override
@@ -120,13 +130,16 @@ public class pokergame extends Activity {
         currentGame = EventBus.getDefault().removeStickyEvent(Game.class);
         if (currentGame == null)
             throw new NullPointerException("No game on EventBus!");
-        maxBet = currentGame.getCurrentPlayer().getCash();
+
+        currentPlayer = currentGame.getCurrentPlayer();
+        maxBet = currentPlayer.getCash();
 
         setContentView(R.layout.activity_pokergame);
 
         //adapter Class code
         plv = (ListView) findViewById(R.id.PlayerListView);
-        plv.setAdapter(new myAdapter(this, currentGame));
+        final myAdapter gameAdapter = new myAdapter(this, currentGame);
+        plv.setAdapter(gameAdapter);
 
 
         //Gets correct things from activity_pokergame.xml
@@ -138,9 +151,8 @@ public class pokergame extends Activity {
             @Override
             public void onClick(View view) {
                 currentGame.consoleLog();
-                currentGame.cycleActivePlayer();
-                currentGame.consoleLog();
                 showBetInputDialog();
+                gameAdapter.refreshAdapter(currentPlayer, currentGame.getCurrentPlayerID());
 
             }
         });
@@ -174,7 +186,9 @@ public class pokergame extends Activity {
                         Double finalAmount = betAmount+potAmount;
                         String finalPot = Double.toString(finalAmount);
 
+                        currentPlayer.removeCash(betAmount);
                         potString.setText(finalPot);
+                        currentGame.cycleActivePlayer();
                     }
                 })
                 .setNegativeButton("Cancel",
