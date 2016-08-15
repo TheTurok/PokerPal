@@ -115,10 +115,16 @@ public class pokergame extends Activity {
     double maxBet = 500;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) throws NullPointerException {
         super.onCreate(savedInstanceState);
-        currentGame = EventBus.getDefault().getStickyEvent(Game.class);
-//        maxBet = currentGame.getCurrentPlayer().getCash();
+        currentGame = EventBus.getDefault().removeStickyEvent(Game.class);
+        if (currentGame == null)
+            throw new NullPointerException("No game on EventBus!");
+        maxBet = currentGame.getCurrentPlayer().getCash();
+
+        //adapter Class code
+        plv = (ListView) findViewById(R.id.PlayerListView);
+        plv.setAdapter(new myAdapter(this, currentGame));
 
         setContentView(R.layout.activity_pokergame);
         //Gets correct things from activity_pokergame.xml
@@ -137,9 +143,7 @@ public class pokergame extends Activity {
             }
         });
 
-        //adapter Class code
-        plv = (ListView) findViewById(R.id.PlayerListView);
-        plv.setAdapter(new myAdapter(this, currentGame));
+
     }
 
     //Creates an input dialog for user BET on click of BET button
