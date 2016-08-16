@@ -24,8 +24,9 @@ public class MainMenu extends Activity {
         //onto bus for pokergame to collect later.
 
         //getUserGameSettings()
-        EventBus.getDefault().postSticky(new Game(6,3));
+        EventBus.getDefault().postSticky(new Game(6,10));
         startActivity(intent);
+
 
 
     }

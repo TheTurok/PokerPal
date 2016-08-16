@@ -66,7 +66,7 @@ public class pokergame extends Activity {
             mockList = new ArrayList<mockRow>();
             String[] mockplayername = game.getNames();
             String[] mockplayermoney = game.getStacks();
-            String[] mockplayerbet = {"1500","1500","1500","1500","1500","1500","1500","1500","1500","1500" };
+            String[] mockplayerbet = {"500","500","500","500","500","500","500","500","500","500" };
 
             for(int i = 0; i< game.getNumPlayers(); i++)
             {

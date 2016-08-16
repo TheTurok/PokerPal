@@ -82,6 +82,54 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/clockTitle"/>
 
+    <TextView
+        android:textColor="#ffffff"
+        android:id="@+id/labelname"
+        android:text="@string/playerLabel"
+        android:textSize="18sp"
+        android:layout_width="100dip"
+        android:layout_height="wrap_content"
+        android:paddingStart="25dip"
+        android:paddingTop="15dip"
+        android:gravity="center"
+        android:layout_below="@+id/thePot"/>
+
+    <TextView
+        android:textColor="#ffffff"
+        android:id="@+id/labelBank"
+        android:text="@string/bankLabel"
+        android:textSize="18sp"
+        android:layout_width="120dip"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dip"
+        android:gravity="center"
+        android:layout_below="@+id/thePot"
+        android:layout_toEndOf="@id/labelname"/>
+
+    <TextView
+        android:textColor="#ffffff"
+        android:id="@+id/labelBet"
+        android:text="@string/betLabel"
+        android:textSize="18sp"
+        android:layout_width="60dip"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dip"
+        android:gravity="center"
+        android:layout_below="@+id/thePot"
+        android:layout_toEndOf="@id/labelBank"/>
+
+    <TextView
+        android:textColor="#ffffff"
+        android:id="@+id/labelSit"
+        android:text="@string/sitLabel"
+        android:textSize="18sp"
+        android:layout_width="80dip"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dip"
+        android:paddingStart="15dip"
+        android:gravity="center"
+        android:layout_below="@+id/thePot"
+        android:layout_toEndOf="@id/labelBet"/>
 
 
     <!-- PLAYERS STRING NAME
@@ -91,7 +139,7 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/thePot"
+        android:layout_below="@id/labelname"
         android:id="@+id/PlayerListView"
         android:layout_above="@+id/linearLayout" />
 

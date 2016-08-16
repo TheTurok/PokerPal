@@ -33,7 +33,7 @@ public class Game {
     public Game() {
 
         m_numSeats = 6;
-        m_numPlayers = 1;
+        m_numPlayers = 10;
         players = new ArrayList<Player>(m_numSeats);
         players.add(new Player(600));
         m_playerTurn = 0;
@@ -50,7 +50,7 @@ public class Game {
         players = new ArrayList<Player>(m_numSeats);
 
         for (int i = 0; i < m_numPlayers; i++) {
-            players.add(new Player(350, "PLAYER_" + Integer.toString(i)));
+            players.add(new Player(1500, "PLAYER_" + Integer.toString(i)));
         }
 
         m_playerTurn = 0;
