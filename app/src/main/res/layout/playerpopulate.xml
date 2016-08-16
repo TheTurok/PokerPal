@@ -35,14 +35,18 @@
         android:text="750"
         android:id="@+id/populateBet" />
 
-    <TextView
-        android:textColor="#ffffff"
+    <ImageView
         android:layout_width="fill_parent"
+        android:layout_height="21.3dip"
+        android:padding="3dip"
+        android:layout_marginTop="4.5dip"
         android:gravity="center"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="X"
-        android:id="@+id/textView" />
+        android:src="@drawable/whitecircle"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:id="@+id/sitImage" />
+
+
 
 
 </LinearLayout>
