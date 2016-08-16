@@ -14,7 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="100dip"
         android:text="@string/resume"
-        android:id="@+id/button0"/>
+        android:id="@+id/button0"
+        android:onClick="goResume"/>
 
     <Button
         android:layout_width="match_parent"
@@ -42,7 +43,8 @@
         android:layout_height="100dip"
         android:layout_below="@id/button3"
         android:text="@string/title_activity_main_menu"
-        android:id="@+id/button4"/>
+        android:id="@+id/button4"
+        android:onClick="goToMainMenu"/>
 
 
 </RelativeLayout>
