@@ -37,16 +37,13 @@
 
     <ImageView
         android:layout_width="fill_parent"
-        android:layout_height="21.3dip"
-        android:padding="3dip"
-        android:layout_marginTop="4.5dip"
+        android:layout_height="28dip"
+        android:layout_marginTop="2.5dip"
         android:gravity="center"
-        android:src="@drawable/whitecircle"
+        android:src="@drawable/sitoutimage"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
         android:id="@+id/sitImage" />
-
-
 
 
 </LinearLayout>
