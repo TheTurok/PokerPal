@@ -19,6 +19,7 @@ import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -49,10 +50,15 @@ public class pokergame extends Activity {
         String mockname;
         String mockmoney;
         String mockbet;
-        mockRow(String mn,String mm, String mb){
+        int turn;  //0 current turn, 1 not current turn, 2 fold
+        boolean sitOut;  //true means they are sitting out
+
+        mockRow(String mn,String mm, String mb, int t, boolean so){
             this.mockname = mn;
             this.mockmoney = mm;
             this.mockbet = mb;
+            this.turn = t;
+            this.sitOut = so;
         }
     }
 
@@ -66,11 +72,13 @@ public class pokergame extends Activity {
             mockList = new ArrayList<mockRow>();
             String[] mockplayername = game.getNames();
             String[] mockplayermoney = game.getStacks();
-            String[] mockplayerbet = {"500","500","500","500","500","500","500","500","500","500" };
+            String[] mockplayerbet = {"500","500","300","500","500","500","700","500","500","500" };
+            int[] mockplayerturn = {0,1,1,1,1,1,2,2,2,2};
+            boolean[] mockplayersitout = {false, false, false, false, false, false,false, false, true, false};
 
             for(int i = 0; i< game.getNumPlayers(); i++)
             {
-                mockList.add(new mockRow(mockplayername[i], mockplayermoney[i], mockplayerbet[i]));
+                mockList.add(new mockRow(mockplayername[i], mockplayermoney[i], mockplayerbet[i], mockplayerturn[i], mockplayersitout[i]));
             }
         }
 
@@ -94,9 +102,13 @@ public class pokergame extends Activity {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View row = inflater.inflate(R.layout.playerpopulate,viewGroup,false);
 
+
             TextView pname = (TextView) row.findViewById(R.id.populateName);
             TextView pmoney = (TextView) row.findViewById(R.id.populateMoney);
             TextView pbet = (TextView) row.findViewById(R.id.populateBet);
+
+            ImageView turnLight = (ImageView) row.findViewById(R.id.turnLight);
+            ImageView sitImage = (ImageView) row.findViewById(R.id.sitImage);
 
             mockRow temp = mockList.get(i);
 
@@ -104,12 +116,23 @@ public class pokergame extends Activity {
             pmoney.setText(temp.mockmoney);
             pbet.setText(temp.mockbet);
 
+            switch(temp.turn)
+            {
+                case 0: turnLight.setImageResource(R.drawable.green_light); break;
+                case 1: turnLight.setImageResource(R.drawable.yellow_light); break;
+                case 2: turnLight.setImageResource(R.drawable.red_light); break;
+            }
+
+            if(temp.sitOut == true)
+                sitImage.setImageResource(R.drawable.sitoutimage);
+            else
+                sitImage.setImageResource(0);
             return row;
         }
 
         public void refreshAdapter(Player player, int playerID){
             mockRow updatedRow = new mockRow(player.getName(), Double.toString(player.getCash()),
-                    "69");
+                    "69", 1, true);
             mockList.set(playerID, updatedRow);
             notifyDataSetChanged();}
     }
