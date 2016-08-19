@@ -137,6 +137,15 @@ public class Game {
         return stacks;
     }
 
+    public Player.Status[] getStatuses() {
+        Player.Status[] statuses = new Player.Status[m_numPlayers];
+
+        for (int i = 0; i < m_numPlayers; i++)
+            statuses[i] = players.get(i).getStatus();
+
+        return statuses;
+    }
+
 
     //adapter
 }

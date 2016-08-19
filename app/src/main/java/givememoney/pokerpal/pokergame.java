@@ -50,10 +50,10 @@ public class pokergame extends Activity {
         String mockname;
         String mockmoney;
         String mockbet;
-        int turn;  //0 current turn, 1 not current turn, 2 fold
+        Player.Status turn;  //0 current turn, 1 not current turn, 2 fold
         boolean sitOut;  //true means they are sitting out
 
-        mockRow(String mn,String mm, String mb, int t, boolean so){
+        mockRow(String mn,String mm, String mb, Player.Status t, boolean so){
             this.mockname = mn;
             this.mockmoney = mm;
             this.mockbet = mb;
@@ -73,7 +73,7 @@ public class pokergame extends Activity {
             String[] mockplayername = game.getNames();
             String[] mockplayermoney = game.getStacks();
             String[] mockplayerbet = {"500","500","300","500","500","500","700","500","500","500" };
-            int[] mockplayerturn = {0,1,1,1,1,1,2,2,2,2};
+            Player.Status[] mockplayerturn = game.getStatuses();
             boolean[] mockplayersitout = {false, false, false, false, false, false,false, false, true, false};
 
             for(int i = 0; i< game.getNumPlayers(); i++)
@@ -118,9 +118,9 @@ public class pokergame extends Activity {
 
             switch(temp.turn)
             {
-                case 0: turnLight.setImageResource(R.drawable.green_light); break;
-                case 1: turnLight.setImageResource(R.drawable.yellow_light); break;
-                case 2: turnLight.setImageResource(R.drawable.red_light); break;
+                case ACTIVE: turnLight.setImageResource(R.drawable.green_light); break;
+                case WAITING: turnLight.setImageResource(R.drawable.yellow_light); break;
+                case IDLE: turnLight.setImageResource(R.drawable.red_light); break;
             }
 
             if(temp.sitOut == true)
@@ -132,9 +132,10 @@ public class pokergame extends Activity {
 
         public void refreshAdapter(Player player, int playerID){
             mockRow updatedRow = new mockRow(player.getName(), Double.toString(player.getCash()),
-                    "69", 1, true);
+                    "69", player.getStatus(), true);
             mockList.set(playerID, updatedRow);
-            notifyDataSetChanged();}
+            notifyDataSetChanged();
+        }
     }
     //final double minBet = previousBet;
     /**     end     **/
@@ -206,6 +207,7 @@ public class pokergame extends Activity {
                         String finalPot = Double.toString(finalAmount);
 
                         currentPlayer.removeCash(betAmount);
+                        currentPlayer.setStatus(Player.Status.WAITING);
                         potString.setText(finalPot);
                         endTurn();
                     }
@@ -310,5 +312,6 @@ public class pokergame extends Activity {
         gameAdapter.refreshAdapter(currentPlayer, currentGame.getCurrentPlayerID());
         currentGame.cycleActivePlayer();
         currentPlayer = currentGame.getCurrentPlayer();
+        gameAdapter.refreshAdapter(currentPlayer, currentGame.getCurrentPlayerID());
     }
 }
