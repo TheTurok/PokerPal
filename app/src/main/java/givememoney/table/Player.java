@@ -9,7 +9,7 @@ package givememoney.table;
 
 public class Player {
     public static enum Status {
-        ACTIVE, WAITING, IDLE
+        ACTIVE, WAITING, IDLE, FOLD
     }
 
     private double m_totalCash;

@@ -59,10 +59,58 @@ public class Game {
 
     }
 
+    //---getters-----
     public Player getCurrentPlayer(){ return players.get(m_playerTurn);}
-
     public int getCurrentPlayerID() { return m_playerTurn;}
+    public int getNumPlayers() {return m_numPlayers;}
+    public double getLastBet(){return m_lastBet;}
 
+    public String[] getStacks() {
+        String[] stacks = new String[m_numPlayers];
+
+        for (int i = 0; i < m_numPlayers; i++)
+            stacks[i] = Double.toString(players.get(i).getCash());
+
+        return stacks;
+    }
+
+    public String[] getBets() {
+        String[] bets = new String[m_numPlayers];
+
+        for (int i = 0; i < m_numPlayers; i++)
+            bets[i] = Double.toString(players.get(i).getBet());
+
+        return bets;
+    }
+
+    public Player.Status[] getStatuses() {
+        Player.Status[] statuses = new Player.Status[m_numPlayers];
+
+        for (int i = 0; i < m_numPlayers; i++)
+            statuses[i] = players.get(i).getStatus();
+
+        return statuses;
+    }
+
+    public String[] getNames() {
+        String[] names = new String[m_numPlayers];
+
+        for (int i = 0; i < m_numPlayers; i++)
+            names[i] = players.get(i).getName();
+
+        return names;
+    }
+
+
+    //------setters----------
+    public void setLastBet(double lastBet){m_lastBet = lastBet;}
+    public void clearBets() {
+        for (int i = 0; i < m_numPlayers; i++)
+            players.get(i).setBet(0);
+        m_lastBet = 0;
+    }
+
+    //------real functions-------
     public void cycleActivePlayer() {
         if (m_numPlayers == 1)
             return;
@@ -116,46 +164,6 @@ public class Game {
         System.out.println(this.toString());
     }
 
-    public int getNumPlayers() {return m_numPlayers;}
-
-    public String[] getNames() {
-        String[] names = new String[m_numPlayers];
-
-        for (int i = 0; i < m_numPlayers; i++)
-            names[i] = players.get(i).getName();
-
-        return names;
-    }
-
-    public String[] getStacks() {
-        String[] stacks = new String[m_numPlayers];
-
-        for (int i = 0; i < m_numPlayers; i++)
-            stacks[i] = Double.toString(players.get(i).getCash());
-
-        return stacks;
-    }
-
-    public String[] getBets() {
-        String[] bets = new String[m_numPlayers];
-
-        for (int i = 0; i < m_numPlayers; i++)
-            bets[i] = Double.toString(players.get(i).getBet());
-
-        return bets;
-    }
-
-    public Player.Status[] getStatuses() {
-        Player.Status[] statuses = new Player.Status[m_numPlayers];
-
-        for (int i = 0; i < m_numPlayers; i++)
-            statuses[i] = players.get(i).getStatus();
-
-        return statuses;
-    }
-
-    public double getLastBet(){return m_lastBet;}
-    public void setLastBet(double lastBet){m_lastBet = lastBet;}
 
 
     //adapter
