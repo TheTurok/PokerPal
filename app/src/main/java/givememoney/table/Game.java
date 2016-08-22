@@ -128,6 +128,7 @@ public class Game {
                 if (players.get(i).getStatus() == Player.Status.WAITING) {
                     m_playerTurn = i;
                     getCurrentPlayer().setStatus(Player.Status.ACTIVE);
+                    clearBets();
                     return;
                 }
             }
