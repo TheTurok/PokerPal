@@ -46,6 +46,9 @@
     <string name="save">Save Game</string>
     <string name="moneyplayer">Add/Remove Money</string>
 
+    <string name="playername">Player Name</string>
+    <string name="confirm">Confirm</string>
+
 
 
 </resources>

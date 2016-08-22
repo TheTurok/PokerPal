@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".pokergame" />
-        <activity android:name=".IngameOption"/>
+        <activity android:name=".IngameOption" />
+        <activity android:name=".playerInfoInput"></activity>
     </application>
 
 </manifest>
