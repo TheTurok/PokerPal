@@ -158,7 +158,9 @@ public class pokergame extends Activity {
     /**     end     **/
 
     private Button betButton;
+    private Button foldButton;
     private TextView potString;
+
     Game currentGame;
     Player currentPlayer;
 
@@ -182,6 +184,7 @@ public class pokergame extends Activity {
 
         //Gets correct things from activity_pokergame.xml
         betButton = (Button) findViewById(R.id.bet);
+        foldButton = (Button) findViewById(R.id.fold);
         potString = (TextView) findViewById(R.id.potnumber);
 
         betButton.setOnClickListener(new OnClickListener() {
@@ -190,6 +193,16 @@ public class pokergame extends Activity {
             public void onClick(View view) {
                 currentGame.consoleLog();
                 showBetInputDialog();
+            }
+        });
+
+        foldButton.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                currentGame.consoleLog();
+                currentPlayer.setStatus(Player.Status.FOLD);
+                endTurn();
             }
         });
 
