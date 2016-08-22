@@ -24,30 +24,29 @@ import java.util.List;
 
 public class Game {
     private int m_numPlayers;
-    private int m_numSeats;
     private List<Player> players;
     private int m_playerTurn;
     private double m_totalPot;
+    private double m_lastBet;
     private List<Double> m_sidePots;
+
 
     public Game() {
 
-        m_numSeats = 6;
         m_numPlayers = 10;
-        players = new ArrayList<Player>(m_numSeats);
+        players = new ArrayList<Player>(m_numPlayers);
         players.add(new Player(600));
         m_playerTurn = 0;
         System.out.println("successfully created Game object");
     }
 
-    public Game(int numSeats, int numPlayers) throws IndexOutOfBoundsException {
+    public Game(int numPlayers) throws IndexOutOfBoundsException {
 
-        if (numSeats <= 0 || numPlayers <=0 )
+        if (numPlayers <=0 )
             throw new IndexOutOfBoundsException();
 
-        m_numSeats = numSeats;
         m_numPlayers = numPlayers;
-        players = new ArrayList<Player>(m_numSeats);
+        players = new ArrayList<Player>(m_numPlayers);
 
         for (int i = 0; i < m_numPlayers; i++) {
             players.add(new Player(1500, "PLAYER_" + Integer.toString(i)));
@@ -56,6 +55,7 @@ public class Game {
         m_playerTurn = 0;
         m_totalPot = 0;
         m_sidePots = new ArrayList<Double>(m_numPlayers);
+        m_lastBet = -1;
 
     }
 
@@ -105,7 +105,6 @@ public class Game {
         String returnString =
         "\n-----Current Game Info------\n" +
         " Number of Players: " + m_numPlayers + "\n" +
-        " Number of Seats: " + m_numSeats + "\n" +
         " Total Pot: " + m_totalPot + "\n" +
         " Current player turn ID: " + players.get(m_playerTurn).toString() + "\n" +
         " \n\nList of Players: " + players.toString() + "\n" + "------------\n";

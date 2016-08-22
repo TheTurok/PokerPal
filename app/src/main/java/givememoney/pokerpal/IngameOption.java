@@ -15,7 +15,7 @@ public class IngameOption extends Activity {
         setContentView(R.layout.activity_ingame_option);
     }
 
-    public void goToMainMenu(View v) {
+    public void goToMainMenu(View    v) {
         Intent intent = new Intent(this, MainMenu.class);
         startActivity(intent);
     }

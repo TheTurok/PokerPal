@@ -16,6 +16,7 @@ public class Player {
     private Status m_status;
     private boolean m_checkFold;
     private boolean m_sitOut;
+    private double m_bet;
     private String m_name;
 
     public Player() {
@@ -44,6 +45,7 @@ public class Player {
         m_status = Status.WAITING;
         m_checkFold = false;
         m_sitOut = false;
+        m_bet=-1;
     }
 
     public Status getStatus(){ return m_status;}
@@ -70,5 +72,8 @@ public class Player {
 
     public void setSitout(boolean wantSit) { m_sitOut = wantSit;}
     public void setCheckFold(boolean wantCheckFold) {m_checkFold = wantCheckFold;}
+    public void setBet(double bet) {m_bet = bet;}
+
+    public double getBet() {return m_bet;}
 
 }

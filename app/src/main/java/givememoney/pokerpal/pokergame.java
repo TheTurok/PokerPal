@@ -116,11 +116,11 @@ public class pokergame extends Activity {
             pmoney.setText(temp.mockmoney);
             pbet.setText(temp.mockbet);
 
-            switch(temp.turn)
-            {
-                case ACTIVE: turnLight.setImageResource(R.drawable.green_light); break;
-                case WAITING: turnLight.setImageResource(R.drawable.yellow_light); break;
-                case IDLE: turnLight.setImageResource(R.drawable.red_light); break;
+                    switch(temp.turn)
+                    {
+                        case ACTIVE: turnLight.setImageResource(R.drawable.green_light); break;
+                        case WAITING: turnLight.setImageResource(R.drawable.yellow_light); break;
+                        case IDLE: turnLight.setImageResource(R.drawable.red_light); break;
             }
 
             if(temp.sitOut == true)
@@ -130,14 +130,30 @@ public class pokergame extends Activity {
             return row;
         }
 
+        /*
         public void refreshAdapter(Player player, int playerID){
             mockRow updatedRow = new mockRow(player.getName(), Double.toString(player.getCash()),
                     "69", player.getStatus(), true);
-            mockList.set(playerID, updatedRow);
+                mockList.set(playerID, updatedRow);
+            notifyDataSetChanged();
+        }*/
+
+        public void refreshAdapter(Game game) {
+            mockList = new ArrayList<mockRow>();
+            String[] mockplayername = game.getNames();
+            String[] mockplayermoney = game.getStacks();
+            String[] mockplayerbet = {"500","500","300","500","500","500","700","500","500","500" };
+            Player.Status[] mockplayerturn = game.getStatuses();
+            boolean[] mockplayersitout = {false, false, false, false, false, false,false, false, true, false};
+
+            for(int i = 0; i< game.getNumPlayers(); i++)
+            {
+                mockList.add(new mockRow(mockplayername[i], mockplayermoney[i], mockplayerbet[i], mockplayerturn[i], mockplayersitout[i]));
+            }
             notifyDataSetChanged();
         }
+
     }
-    //final double minBet = previousBet;
     /**     end     **/
     /**     end     **/
 
@@ -222,6 +238,7 @@ public class pokergame extends Activity {
         // create an alert dialog
         final AlertDialog alert = alertDialogBuilder.create();
 
+        //---------Bet Money Checker---------
         //Disable bet for invalid inputs
         //TODO: Set max bet as current user chips amount
         editText.addTextChangedListener(new TextWatcher() {
@@ -309,9 +326,8 @@ public class pokergame extends Activity {
     }
 
     public void endTurn() {
-        gameAdapter.refreshAdapter(currentPlayer, currentGame.getCurrentPlayerID());
         currentGame.cycleActivePlayer();
         currentPlayer = currentGame.getCurrentPlayer();
-        gameAdapter.refreshAdapter(currentPlayer, currentGame.getCurrentPlayerID());
+        gameAdapter.refreshAdapter(currentGame);
     }
 }

@@ -9,6 +9,9 @@ import android.widget.EditText;
 
 import org.greenrobot.eventbus.EventBus;
 
+//Make BET CHECK FOLD function
+//Make PLAYER LIST dialog between Main menu and pokergame
+
 public class MainMenu extends Activity {
 
     @Override
@@ -24,7 +27,7 @@ public class MainMenu extends Activity {
         //onto bus for pokergame to collect later.
 
         //getUserGameSettings()
-        EventBus.getDefault().postSticky(new Game(6,10));
+        EventBus.getDefault().postSticky(new Game(10));
         startActivity(intent);
 
 
