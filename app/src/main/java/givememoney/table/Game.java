@@ -136,6 +136,15 @@ public class Game {
         return stacks;
     }
 
+    public String[] getBets() {
+        String[] bets = new String[m_numPlayers];
+
+        for (int i = 0; i < m_numPlayers; i++)
+            bets[i] = Double.toString(players.get(i).getBet());
+
+        return bets;
+    }
+
     public Player.Status[] getStatuses() {
         Player.Status[] statuses = new Player.Status[m_numPlayers];
 
@@ -144,6 +153,9 @@ public class Game {
 
         return statuses;
     }
+
+    public double getLastBet(){return m_lastBet;}
+    public void setLastBet(double lastBet){m_lastBet = lastBet;}
 
 
     //adapter

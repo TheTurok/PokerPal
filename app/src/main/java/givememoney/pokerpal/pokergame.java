@@ -142,7 +142,7 @@ public class pokergame extends Activity {
             mockList = new ArrayList<mockRow>();
             String[] mockplayername = game.getNames();
             String[] mockplayermoney = game.getStacks();
-            String[] mockplayerbet = {"500","500","300","500","500","500","700","500","500","500" };
+            String[] mockplayerbet = game.getBets();
             Player.Status[] mockplayerturn = game.getStatuses();
             boolean[] mockplayersitout = {false, false, false, false, false, false,false, false, true, false};
 
@@ -223,6 +223,8 @@ public class pokergame extends Activity {
                         String finalPot = Double.toString(finalAmount);
 
                         currentPlayer.removeCash(betAmount);
+                        currentPlayer.setBet(betAmount);
+                        currentGame.setLastBet(currentPlayer.getBet());
                         currentPlayer.setStatus(Player.Status.WAITING);
                         potString.setText(finalPot);
                         endTurn();

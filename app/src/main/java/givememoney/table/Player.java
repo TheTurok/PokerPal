@@ -73,8 +73,8 @@ public class Player {
 
     public void setSitout(boolean wantSit) { m_sitOut = wantSit;}
     public void setCheckFold(boolean wantCheckFold) {m_checkFold = wantCheckFold;}
-    public void setBet(double bet) {m_bet = bet;}
 
+    public void setBet(double bet) {m_bet = bet;}
     public double getBet() {return m_bet;}
 
 }
