@@ -13,6 +13,7 @@ public class Player {
     }
 
     private double m_totalCash;
+
     private Status m_status;
     private boolean m_checkFold;
     private boolean m_sitOut;
