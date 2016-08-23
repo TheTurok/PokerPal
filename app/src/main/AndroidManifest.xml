@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".pokergame" />
         <activity android:name=".IngameOption" />
-        <activity android:name=".playerInfoInput"></activity>
+        <activity android:name=".playerInfoInput" />
+        <activity android:name=".ChooseGameOptions"></activity>
     </application>
 
 </manifest>

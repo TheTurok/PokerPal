@@ -49,6 +49,9 @@
     <string name="playername">Player Name</string>
     <string name="confirm">Confirm</string>
 
+    <string name="CreatingGame">Creating Game</string>
+    <string name="numofplayers">Number of Players</string>
+    <string name="startingstack">Starting Stacks</string>
 
 
 </resources>
