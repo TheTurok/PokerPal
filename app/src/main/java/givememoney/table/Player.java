@@ -53,6 +53,8 @@ public class Player {
     public double getCash() { return m_totalCash;}
     public boolean isCheckFold() {return m_checkFold;}
     public boolean sittingOut() {return m_sitOut;}
+    public void setName(String i){ m_name = i; return;}
+    public void setStack(double i) { m_totalCash = i; return;}
 
     public void removeCash(double spend) {
         if (spend > m_totalCash)

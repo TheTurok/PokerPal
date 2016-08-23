@@ -3,6 +3,7 @@ package givememoney.pokerpal;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.EditText;
 
@@ -27,8 +28,9 @@ public class ChooseGameOptions extends Activity {
         int playernum = Integer.valueOf(playernumET.getText().toString());
         int stacksizes = Integer.valueOf(stacksizesET.getText().toString());
 
-        intent.putExtra("playerNum", 5);
-        intent.putExtra("stackSizes", 100);
+        Game newGame = new Game(playernum , stacksizes);
+        System.out.println("playernum =" + playernum);
+        EventBus.getDefault().postSticky(newGame);
 
         startActivity(intent);
     }

@@ -116,17 +116,18 @@ public class pokergame extends Activity {
             pmoney.setText(temp.mockmoney);
             pbet.setText(temp.mockbet);
 
-                    switch(temp.turn)
-                    {
-                        case ACTIVE: turnLight.setImageResource(R.drawable.green_light); break;
-                        case WAITING: turnLight.setImageResource(R.drawable.yellow_light); break;
-                        case IDLE: turnLight.setImageResource(R.drawable.red_light); break;
+            switch(temp.turn)
+            {
+                case ACTIVE: turnLight.setImageResource(R.drawable.green_light); break;
+                case WAITING: turnLight.setImageResource(R.drawable.yellow_light); break;
+                case IDLE: turnLight.setImageResource(R.drawable.red_light); break;
             }
 
             if(temp.sitOut == true)
                 sitImage.setImageResource(R.drawable.sitoutimage);
             else
                 sitImage.setImageResource(0);
+
             return row;
         }
 

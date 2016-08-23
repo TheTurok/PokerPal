@@ -29,6 +29,7 @@ public class Game {
     private double m_totalPot;
     private double m_lastBet;
     private List<Double> m_sidePots;
+    private int m_stack;
 
 
     public Game() {
@@ -40,16 +41,18 @@ public class Game {
         System.out.println("successfully created Game object");
     }
 
-    public Game(int numPlayers) throws IndexOutOfBoundsException {
+    public Game(int numPlayers, int stack) throws IndexOutOfBoundsException {
 
         if (numPlayers <=0 )
             throw new IndexOutOfBoundsException();
 
         m_numPlayers = numPlayers;
+        m_stack = stack;
+
         players = new ArrayList<Player>(m_numPlayers);
 
         for (int i = 0; i < m_numPlayers; i++) {
-            players.add(new Player(1500, "PLAYER_" + Integer.toString(i)));
+            players.add(new Player(m_stack, "PLAYER " + Integer.toString(i)));
         }
 
         m_playerTurn = 0;
@@ -59,11 +62,13 @@ public class Game {
 
     }
 
+
     //---getters-----
     public Player getCurrentPlayer(){ return players.get(m_playerTurn);}
     public int getCurrentPlayerID() { return m_playerTurn;}
     public int getNumPlayers() {return m_numPlayers;}
     public double getLastBet(){return m_lastBet;}
+    public List<Player> getPlayerList(){return players;}
 
     public String[] getStacks() {
         String[] stacks = new String[m_numPlayers];

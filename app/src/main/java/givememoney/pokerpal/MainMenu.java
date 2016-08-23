@@ -21,13 +21,13 @@ public class MainMenu extends Activity {
     }
 
     public void startPokerGame(View v) {
-        Intent intent = new Intent(this, pokergame.class);
+        Intent intent = new Intent(this, ChooseGameOptions.class);
 
         //TODO: Ask user for Game starting parameters, then post the Game with user params
         //onto bus for pokergame to collect later.
 
         //getUserGameSettings()
-        EventBus.getDefault().postSticky(new Game(10));
+        //EventBus.getDefault().postSticky(new Game(10));
         startActivity(intent);
 
 
